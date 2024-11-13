@@ -1,5 +1,5 @@
-import { connectDB } from "@/lib/dbConncect";
 import { CoursesModel } from "@/lib/modals/coursesModel";
+import { connectDB } from "@/lib/dbConncect";
 import { headers } from "next/headers";
 
 export async function GET(response) {

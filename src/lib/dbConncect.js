@@ -27,11 +27,11 @@ export async function connectDB() {
 
     // Log a confirmation message if the DB is connected
     if (isConnected) {
-      console.log("DB connected successfully");
+      console.log("DB connected successfully from dbConnect.js");
     }
   } catch (error) {
     // Error handling: Log the error message and throw an appropriate error
-    console.log("🚀 ~ connectDB ~ error:", error.message);
+    console.log("🚀 ~ connectDB from dbConnect.js ~ error:", error.message);
     console.error("DB connection failed:", error);
     throw new Error("Database connection error");
   }
