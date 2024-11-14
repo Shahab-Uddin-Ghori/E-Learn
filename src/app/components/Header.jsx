@@ -1,7 +1,18 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+
+// Initialization for ES Users
+import { Collapse, Dropdown, initTWE } from "tw-elements";
+import { FaUser } from "react-icons/fa";
 
 function Header() {
+  useEffect(() => {
+    initTWE({ Collapse, Dropdown });
+  }, []);
+
+  const user = false;
+
   return (
     <>
       {/* Main navigation container */}
@@ -65,26 +76,29 @@ function Header() {
                   Courses
                 </Link>
               </li>
-              {/* Team link */}
-              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
-                <Link
-                  href={"/assignments"}
-                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                  data-twe-nav-link-ref=""
-                >
-                  Assignments
-                </Link>
-              </li>
-              {/* Projects link */}
-              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
-                <Link
-                  href={"/projects"}
-                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                  data-twe-nav-link-ref=""
-                >
-                  Projects
-                </Link>
-              </li>
+              {user ? (
+                <>
+                  <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
+                    <Link
+                      href={"/assignments"}
+                      className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                      data-twe-nav-link-ref=""
+                    >
+                      Assignments
+                    </Link>
+                  </li>
+                  <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
+                    <Link
+                      href={"/projects"}
+                      className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                      data-twe-nav-link-ref=""
+                    >
+                      Projects
+                    </Link>
+                  </li>
+                </>
+              ) : null}
+
               {/* announcements */}
               <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
                 <Link
@@ -93,6 +107,16 @@ function Header() {
                   data-twe-nav-link-ref=""
                 >
                   Anouncements
+                </Link>
+              </li>
+              {/* about us */}
+              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
+                <Link
+                  href={"/aboutus"}
+                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                  data-twe-nav-link-ref=""
+                >
+                  About us
                 </Link>
               </li>
             </ul>
@@ -198,49 +222,92 @@ function Header() {
                 aria-expanded="false"
               >
                 {/* User avatar */}
-                <img
-                  src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
-                  className="rounded-full"
-                  style={{ height: 25, width: 25 }}
-                  alt=""
-                  loading="lazy"
-                />
+                {user ? (
+                  <img
+                    src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
+                    className="rounded-full"
+                    style={{ height: 25, width: 25 }}
+                    alt=""
+                    loading="lazy"
+                  />
+                ) : (
+                  <FaUser />
+                )}
               </a>
               {/* Second dropdown menu */}
-              <ul
-                className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
-                aria-labelledby="dropdownMenuButton2"
-                data-twe-dropdown-menu-ref=""
-              >
-                {/* Second dropdown menu items */}
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+              {user ? (
+                <ul
+                  className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
+                  aria-labelledby="dropdownMenuButton2"
+                  data-twe-dropdown-menu-ref=""
+                >
+                  {/* Second dropdown menu items */}
+                  <li>
+                    <Link
+                      href={"/profile"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={"/assignments"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      My Assignments
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={"/myprojects"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      My Projects
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={"/"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul
+                  className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
+                  aria-labelledby="dropdownMenuButton2"
+                  data-twe-dropdown-menu-ref=""
+                >
+                  {/* Second dropdown menu items */}
+
+                  <li>
+                    <Link
+                      href={"/singup"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      Login
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      href={"/login"}
+                      className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
+                      data-twe-dropdown-item-ref=""
+                    >
+                      SignUp
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </div>
           </div>
           {/* Right elements */}

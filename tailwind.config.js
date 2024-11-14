@@ -4,6 +4,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "node_modules/tw-elements/js/**/*.js", // Add this line for tw-elements
   ],
   theme: {
     extend: {
@@ -13,5 +14,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tw-elements/plugin.cjs"), // Add this line for tw-elements
+  ],
 };
